@@ -16,13 +16,13 @@
                         Licences open-source
                     </a>
                     <a target='_blank' href="https://github.com/depweb2/platform">
-                        Voir le projet sur GitHub...
+                        Voir le projet sur GitHub
                     </a>
                     <a href='#hotkeys'>
                         Accessibilité
                     </a>
                     <a href="#tca">
-                        Console d'admirnistation...
+                        Console d'admirnistation
                     </a>
                     <a href='#'>
                         Fermer la fenêtre À propos

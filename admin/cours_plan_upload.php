@@ -33,29 +33,30 @@ if ($imageFileType == "pdf") {
         } else {
             $uploadOk = 0;
         }
-    }else{
+    } else {
         $uploadOk = 0;
     }
-}else{
+} else {
     $uploadOk = 0;
-}
-// Check if file already exists
-if (file_exists($target)) {
-    if(!unlink($target)){
-        header("Location: /panel_cours.php?uploaderror=1&cid=$idc");
-        die();
-    }
 }
 if ($uploadOk == 0) {
     header("Location: /panel_cours.php?notpdf=1&cid=$idc");
     die();
 // if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_FILES["plan"]["tmp_name"], $target)) {
-        header("Location: /panel_cours.php?update=1");
-        die();
-    } else {
-        header("Location: /panel_cours.php?uploaderror=1&cid=$idc");
-        die();
+    // Check if file already exists
+    if (file_exists($target)) {
+        if (!unlink($target)) {
+            header("Location: /panel_cours.php?uploaderror=1&cid=$idc");
+            die();
+        } else {
+            if (move_uploaded_file($_FILES["plan"]["tmp_name"], $target)) {
+                header("Location: /panel_cours.php?update=1");
+                die();
+            } else {
+                header("Location: /panel_cours.php?uploaderror=1&cid=$idc");
+                die();
+            }
+        }
     }
 }
