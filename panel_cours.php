@@ -72,6 +72,7 @@ if (!$login == "yes") {
                                     <th>Nom générique</th>
                                     <th>Type de module</th>
                                     <th>Durée du cours</th>
+                                    <th>Plan de cours</th>
                                     <th>Modifier</th>
                                 </tr>
                                 <?php
@@ -93,7 +94,7 @@ if (!$login == "yes") {
                                     }else{
                                         echo "<td>Cours</td><td>$durc heures</td>";
                                     }
-                                    echo "<td style='width: 1%;'><a class='full w3-btn w3-theme' href='javascript:void(0)' onclick='load_cours_edit($idc)'>Modifier</a></td></tr>";
+                                    echo "<td style='width: 1%;'><a class='upload-btn w3-btn w3-blue' style='width: 165px;' href='javascript:void(0)' onclick='load_plan_add($idc)'>Plan de cours...</a></td><td style='width: 1%;'><a class='full w3-btn w3-theme' href='javascript:void(0)' onclick='load_cours_edit($idc)'>Modifier</a></td></tr>";
                                 }
                                 ?>
                             </table>
@@ -111,7 +112,23 @@ if (!$login == "yes") {
     if (array_key_exists("update", $_GET)) {
         echo "alert('La base de données des cours a été mise à jour avec succès.');";
     }
-    if(array_key_exists("error", $_GET)){
+    if(array_key_exists("notpdf", $_GET)){
+        echo "alert(\"Erreur lors de l'enregistrement. Le fichier spécifié n'est pas un PDF.\");";
+        if(isset($_GET["cid"])){
+            if($_GET["cid"] != ""){
+                echo "load_plan_add(".$_GET["cid"].");";
+            }
+        }
+    }
+    if(array_key_exists("uploaderror", $_GET)){
+        echo "alert(\"Une erreur est survenue pendant le téléversement. Veuillez réessayer.\");";
+        if(isset($_GET["cid"])){
+            if($_GET["cid"] != ""){
+                echo "load_plan_add(".$_GET["cid"].");";
+            }
+        }
+    }
+        if(array_key_exists("error", $_GET)){
         echo "alert(\"Erreur lors de l'enregistrement. La valeur saisie n'est pas un nombre valide.\");";
         if(isset($_GET["cid"])){
             if($_GET["cid"] != ""){
@@ -121,6 +138,15 @@ if (!$login == "yes") {
     }
     ?>
                 };
+                function load_plan_add(id) {
+                    // charge par XMLHTTP le foumulaure d'édition et l'affiche
+                    // si aucun id n'est trouvé une erreur 403 se produit (c'est voulu)
+                    $("#cours_edit_container").load("/include/cours_plan_edit.php", {
+                        "dic": id
+                    }, function () {
+                        location.hash = "#cours_edit";
+                    });
+                }
                 function load_cours_edit(id) {
                     // charge par XMLHTTP le foumulaure d'édition et l'affiche
                     // si aucun id n'est trouvé une erreur 403 se produit (c'est voulu)

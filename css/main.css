@@ -1204,6 +1204,12 @@ main table tr td{
 .w3-modal.fs .w3-modal-content .w3-modal-main-container tr td:first-child{
     font-weight: bold;
 }
+.upload-btn{
+    background-image: url(../images/ic_file_upload_white_24dp.png);
+    background-position: 5% center;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+}
 @media screen and (min-width: 981px){
     .index_nav.index_nav_fixed{
         position: fixed;
