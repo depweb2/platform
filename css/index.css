@@ -1,0 +1,127 @@
+#compatible{
+    padding-top: 270px;
+}
+.crp{
+    display: none !important;
+}
+@-webkit-keyframes slidy {
+    0% { left: 0%; }
+    10% { left: 0%; }
+    11.111% { left: -50%; }
+    21% { left: -50%; }
+    22.222% { left: -100%; }
+    32% { left: -100%; }
+    33.333% { left: -150%; }
+    43% { left: -150%; }
+    44.444% { left: -200%; }
+    54% { left: -200%; }
+    55.555% { left: -250%; }
+    65% { left: -250%; }
+    66.999% { left: -300%; }
+    76% { left: -300%; }
+    77.777% { left: -350%; }
+    87% { left: -350%; }
+    88.888% { left: -400%; }
+    98% { left: -400%; }
+    100% { left: 0%; }
+}
+@-moz-keyframes slidy {
+    0% { left: 0%; }
+    10% { left: 0%; }
+    11.111% { left: -50%; }
+    21% { left: -50%; }
+    22.222% { left: -100%; }
+    32% { left: -100%; }
+    33.333% { left: -150%; }
+    43% { left: -150%; }
+    44.444% { left: -200%; }
+    54% { left: -200%; }
+    55.555% { left: -250%; }
+    65% { left: -250%; }
+    66.999% { left: -300%; }
+    76% { left: -300%; }
+    77.777% { left: -350%; }
+    87% { left: -350%; }
+    88.888% { left: -400%; }
+    98% { left: -400%; }
+    100% { left: 0%; }
+}
+@-o-keyframes slidy {
+    0% { left: 0%; }
+    10% { left: 0%; }
+    11.111% { left: -50%; }
+    21% { left: -50%; }
+    22.222% { left: -100%; }
+    32% { left: -100%; }
+    33.333% { left: -150%; }
+    43% { left: -150%; }
+    44.444% { left: -200%; }
+    54% { left: -200%; }
+    55.555% { left: -250%; }
+    65% { left: -250%; }
+    66.999% { left: -300%; }
+    76% { left: -300%; }
+    77.777% { left: -350%; }
+    87% { left: -350%; }
+    88.888% { left: -400%; }
+    98% { left: -400%; }
+    100% { left: 0%; }
+}
+@keyframes slidy {
+    0% { left: 0%; }
+    10% { left: 0%; }
+    11.111% { left: -50%; }
+    21% { left: -50%; }
+    22.222% { left: -100%; }
+    32% { left: -100%; }
+    33.333% { left: -150%; }
+    43% { left: -150%; }
+    44.444% { left: -200%; }
+    54% { left: -200%; }
+    55.555% { left: -250%; }
+    65% { left: -250%; }
+    66.999% { left: -300%; }
+    76% { left: -300%; }
+    77.777% { left: -350%; }
+    87% { left: -350%; }
+    88.888% { left: -400%; }
+    98% { left: -400%; }
+    100% { left: 0%; }
+}
+div#slides { overflow: hidden; }
+div#slides figure img { width: 10%; height: 20%; float: left; }
+div#slides figure { 
+    position: relative;
+    top: -15%;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    -webkit-animation: 60s slidy infinite; 
+    -moz-animation: 60s slidy infinite;
+    -o-animation: 60s slidy infinite; 
+    animation: 60s slidy infinite; 
+}
+.w3-row{
+    display: table;
+    width: 100%;
+    padding: 0px 0px;
+}
+.w3-row .w3-half{
+    display: table-cell;
+    float: none;
+    overflow: hidden;
+}
+@media screen and (max-width: 980px){
+    .w3-row .w3-half{
+        display: table;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 980px){
+    #compatible{
+        padding-top: 0;
+    }
+}
+

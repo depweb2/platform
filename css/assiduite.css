@@ -1,0 +1,15 @@
+html{
+    background: url(../images/artifices.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.ass_container ul{
+    list-style-type: none;
+}
+.ass_container ul li{
+    padding: 7px;
+    padding-left: 45px;
+    background: url(../images/ic_grade_white_18dp.png) no-repeat 3px center;
+}

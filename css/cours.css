@@ -1,0 +1,280 @@
+#ls{
+    display: none;
+}
+.pcinfo{
+    padding-left: 40px;
+    background: url(/images/ic_arrow_forward_white_18dp.png) no-repeat left center;
+}
+.sites_title img{
+    width: 100%;
+    margin: auto 0;
+}
+#plan ul{
+    list-style-type:none;
+}
+#plan a{
+    font-size: 25px;
+}
+.ctitle{
+    clear:both;
+    position: relative;
+    z-index: -1;
+}
+.ctitle h2 a:hover img{
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.sites_container{
+    display: 0block;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+.sites_container > div, #sites-container > div > div{
+    position: relative;
+    display: block;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    clear: both;
+    width: auto;
+    padding: 5px;
+}
+.sites_container .annee{
+    background: #43A047;
+}
+.sites_container .groupe{
+    background: #388E3C;
+}
+.site_eleve{
+    position: relative;
+    padding: 8px;
+    margin: 10px;
+    text-decoration: none;
+    display: inline-block;
+    display: -webkit-flex-item;
+    display: -moz-flex-item;
+    display: -ms-flex-item;
+    display: flex-item;
+    overflow: hidden;
+    width: 23%;
+    width: -webkit-calc(25% - 20px);
+    width: -moz-calc(25% - 20px);
+    width: -ms-calc(25% - 20px);
+    width: calc(25% - 20px);
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.site_eleve i, .site_eleve b{
+    display: block;
+    padding: 2px;
+}
+.site_eleve i{
+    font-style: normal;
+    font-size: 18px;
+}
+.site_eleve i:before, .site_eleve i:after{
+    content: '"';
+}
+@media screen and (min-width: 1260px){
+    .site_eleve{
+        width: 15%;
+        width: -webkit-calc(20% - 20px);
+        width: -moz-calc(20% - 20px);
+        width: -ms-calc(20% - 20px);
+        width: calc(20% - 20px);
+    }
+}
+@media screen and (min-width: 1490px){
+    .site_eleve{
+        width: 12%;
+        width: -webkit-calc(16.666% - 20px);
+        width: -moz-calc(16.666% - 20px);
+        width: -ms-calc(16.666% - 20px);
+        width: calc(16.666% - 20px);
+    }
+}
+@media screen and (max-width: 1030px){
+    .site_eleve{
+        width: 29%;
+        width: -webkit-calc(33.333% - 20px);
+        width: -moz-calc(33.333% - 20px);
+        width: -ms-calc(33.333% - 20px);
+        width: calc(33.333% - 20px);
+    }
+}
+@media screen and (max-width: 800px){
+    .site_eleve{
+        width: 40%;
+        width: -webkit-calc(50% - 20px);
+        width: -moz-calc(50% - 20px);
+        width: -ms-calc(50% - 20px);
+        width: calc(50% - 20px);
+    }
+}
+@media screen and (max-width: 570px){
+    .site_eleve{
+        width: 90%;
+        width: -webkit-calc(100% - 20px);
+        width: -moz-calc(100% - 20px);
+        width: -ms-calc(100% - 20px);
+        width: calc(100% - 20px);
+    }
+}
+form input{
+    height: 40px;
+}
+form label{
+    line-height: 40px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+form a{
+    height: 40px;
+    padding-top: 2px;
+}
+.searchresult{
+    width: 100%;
+    display: block;
+    margin: 10px;
+    padding: 7px;
+}
+.searchresult2{
+    width: 100%;
+    display: table;
+    padding: 7px;
+    margin-bottom: 5px;
+}
+.searchresult b{
+    font-size: 18px;
+}
+.searchresult2 b{
+    font-size: 18px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 60%;
+}
+.searchresult i{
+    display: block;
+    padding-left: 20px;   
+}
+.searchresult2 i{
+    display: table-cell;
+    vertical-align: middle;
+    width: 40%;
+}
+.searchresult.web, .searchresult2.web{
+    background: url(../images/ic_public_white_18dp.png) no-repeat 5px center;
+    padding-left: 50px;
+}
+.searchresult.doc, .searchresult2.doc{
+    background: url(../images/ic_description_white_18dp.png) no-repeat 5px center;
+    padding-left: 50px;
+}
+.searchbar{
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+}
+#q{
+    width: -webkit-calc(100% - 80px);
+    width: -moz-calc(100% - 80px);
+    width: -ms-calc(100% - 80px);
+    width: calc(100% - 80px);
+    margin-right: 5px;
+}
+#qc{
+    position: static;
+    width: 80px;
+}
+.google-search a{
+    display: inline-block;
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 50px;
+    background: url(../images/ic_search_white_18dp.png) no-repeat 5px center;
+}
+.w3-container-glass{
+    background-color: rgba(255,255,255,0.8);
+    color: black;
+}
+.w3-container-glass-2{
+    background-color: rgba(255,255,255,0.63);
+    color: black;
+}
+.site_eleve.w3-container-glass-2{
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+.site_eleve.w3-container-glass-2:hover{
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+}
+.w3-container-glass-green{
+    background-color: rgba(76,175,80,0.85);
+    color: white;
+}
+.w3-container-glass-green .searchresult2{
+    background-color: rgba(56,142,60,0.85);
+}
+.w3-container-glass-green h4{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+.w3-container-glass-black{
+    background-color: rgba(0,0,0,0.85);
+    color: white;
+}
+.groupe{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.course_duration{
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    padding-left: 45px;
+    background: url(/images/ic_access_time_white_18dp.png) no-repeat 0 center;
+}
+.course_teacher{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 45px;
+    background: url(/images/ic_person_white_18dp.png) no-repeat 0 center;
+}
+.course_name{
+    padding-left: 60px;
+    background: url(/images/ic_school_white_18dp.png) no-repeat 10px center;
+}
+.course_obj{
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-weight: bold;
+    padding-left: 45px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: url(/images/ic_assistant_photo_white_18dp.png) no-repeat 0px center;
+}
+.course_comp{
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 45px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: url(/images/ic_thumb_up_white_18dp.png) no-repeat 0px center;
+}

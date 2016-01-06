@@ -1,0 +1,26 @@
+@media screen and (min-width:981px) and (min-height: 401px){
+    body{
+        padding-top: 107px;
+    }
+    
+    .ctitle.fixed{
+        position: fixed;
+        top: 67px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 91;
+        -webkit-transition: left 200ms ease-out, right 200ms ease-out;
+        -moz-transition: left 200ms ease-out, right 200ms ease-out;
+        -o-transition: left 200ms ease-out, right 200ms ease-out;
+        transition: left 200ms ease-out, right 200ms ease-out;
+    }
+    .ctitle.fixed.sideopen{
+        left: 350px;
+        right: -350px;
+    }
+    .ctitle.fixed.sideopen.crop{
+        right: 0;
+    }
+}
+
