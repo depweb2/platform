@@ -5,7 +5,6 @@
                 <a href="#" class="w3-closebtn">&times;</a>
                 <h2>
                     <a class="nou arrow-link" href="#">
-                        <img class="icon30" src="images/ic_arrow_back_white_18dp.png" alt=""/>
                         Enseignant
                     </a>                              
                 </h2>

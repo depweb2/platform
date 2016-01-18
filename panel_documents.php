@@ -1,23 +1,7 @@
 <?php
-header('Cache-Control: no-cache, no-store, must-revalidate');
-
-function access_denied() {
-    header("Location: /admin/logout.php");
-}
-
-function erreur($msg) {
-    echo "<script>alert(\"$msg\")</script>";
-}
-
-session_start();
-$now = time(); // Checking the time now when home page starts.
-if ($now > $_SESSION['expire']) {
-    access_denied();
-}
-$login = $_SESSION["login"];
-if (!$login == "yes") {
-    access_denied();
-} else {
+ob_start();
+require("/admin/verify_login.php");
+if ($IS_LOGGED_IN) {
     ?>
     <!DOCTYPE html>
     <!--
@@ -53,14 +37,14 @@ if (!$login == "yes") {
         <body>
             <?php
             require("./include/loading.php");
+            require("/include/panel_sidebar.php");
             ?>
             <div id="panel_sites" class="w3-modal fs" style='display: table !important;'>
                 <div class="w3-modal-dialog">
                     <div class="w3-modal-content">
                         <header class="w3-container w3-theme">
                             <h2>
-                                <a class="nou arrow-link" href="/panel.php">
-                                    <img class="icon30" src="images/ic_arrow_back_white_18dp.png" alt=""/>
+                                <a class="nou menu-link" href="javascript:void(0)" onclick='w3_toggle()'>
                                     Documents
                                 </a>
                                 <a class="w3-right w3-modal-confirm no-text" onclick="load_doc_add()" href="javascript:void(0)">

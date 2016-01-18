@@ -15,14 +15,12 @@ while(odbc_fetch_row($result1)){
 }
 if ($haver) {
     session_start();
-    $_SESSION["login"] = "yes";
+    $_SESSION["login"] = true;
     $_SESSION['start'] = time(); // Taking now logged in time.
-    // Ending a session in 30 minutes from the starting time.
+    // Ending a session in 60 minutes from the starting time.
     $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
-    header('Status: 301 Moved Permanently', false, 301);
-    header('Location: ../panel.php?first=1');
+    header('Location: ../panel.php');
 }else{
-    header('Status: 301 Moved Permanently', false, 301);
     header('Location: /admin.php?bad=1');
 }
 

@@ -1,23 +1,7 @@
 <?php
-header('Cache-Control: no-cache, no-store, must-revalidate');
-
-function access_denied() {
-    header("Location: /admin/logout.php");
-}
-
-function erreur($msg) {
-    echo "<script>alert(\"$msg\")</script>";
-}
-
-session_start();
-$now = time(); // Checking the time now when home page starts.
-if ($now > $_SESSION['expire']) {
-    access_denied();
-}
-$login = $_SESSION["login"];
-if (!$login == "yes") {
-    access_denied();
-} else {
+ob_start();
+require("/admin/verify_login.php");
+if ($IS_LOGGED_IN) {
     ?>
     <!DOCTYPE html>
     <!--
@@ -53,14 +37,14 @@ if (!$login == "yes") {
         <body>
             <?php
             require("./include/loading.php");
+            require("/include/panel_sidebar.php");
             ?>
             <div id="panel_cours" class="w3-modal fs" style='display: table !important;'>
                 <div class="w3-modal-dialog">
                     <div class="w3-modal-content">
                         <header class="w3-container w3-theme">
                             <h2>
-                                <a class="nou arrow-link" href="/panel.php">
-                                    <img class="icon30" src="images/ic_arrow_back_white_18dp.png" alt=""/>
+                                <a class="nou menu-link" href="javascript:void(0)" onclick='w3_toggle()'>
                                     Modules et stages
                                 </a>
                             </h2>
@@ -72,6 +56,7 @@ if (!$login == "yes") {
                                     <th>Nom générique</th>
                                     <th>Type de module</th>
                                     <th>Durée du cours</th>
+                                    <th>Enseignants</th>
                                     <th>Plan de cours</th>
                                     <th>Modifier</th>
                                 </tr>
@@ -88,13 +73,13 @@ if (!$login == "yes") {
                                     $typec = odbc_result($result1, "stage");
                                     $durc = odbc_result($result1, "dur_cours");
                                     $sdurc = odbc_result($result1, "stage_dur_semaine");
-                                    echo "<tr><td><a href='/cours.php?c=$nidc'>$nomc (M$idc)</a></td><td>$nidc</td>";
-                                    if($typec){
-                                        echo "<td>Stage</td><td>$durc jours (".$sdurc."h/sem.)</td>";
-                                    }else{
+                                    echo "<tr><td><a target='_blank' href='/cours.php?c=$nidc'>$nomc (M$idc)</a></td><td>$nidc</td>";
+                                    if ($typec) {
+                                        echo "<td>Stage</td><td>$durc jours (" . $sdurc . "h/sem.)</td>";
+                                    } else {
                                         echo "<td>Cours</td><td>$durc heures</td>";
                                     }
-                                    echo "<td style='width: 1%;'><a class='upload-btn w3-btn w3-blue' style='width: 165px;' href='javascript:void(0)' onclick='load_plan_add($idc)'>Plan de cours...</a></td><td style='width: 1%;'><a class='full w3-btn w3-theme' href='javascript:void(0)' onclick='load_cours_edit($idc)'>Modifier</a></td></tr>";
+                                    echo "<td style='width: 1%;'><a class='w3-btn w3-blue' href='javascript:void(0)' onclick='load_cours_prof($idc)'>Enseignants</a><td style='width: 1%;'><a class='upload-btn w3-btn w3-teal' style='width: 150px;' href='javascript:void(0)' onclick='load_plan_add($idc)'>Plan de cours</a></td><td style='width: 1%;'><a class='full w3-btn w3-theme' href='javascript:void(0)' onclick='load_cours_edit($idc)'>Modifier</a></td></tr>";
                                 }
                                 ?>
                             </table>
@@ -112,32 +97,49 @@ if (!$login == "yes") {
     if (array_key_exists("update", $_GET)) {
         echo "alert('La base de données des cours a été mise à jour avec succès.');";
     }
-    if(array_key_exists("notpdf", $_GET)){
+    if (array_key_exists("enserror", $_GET)) {
+        echo "alert(\"Erreur lors de la mise à jour de l'association des enseignants au cours.\");";
+        if (isset($_GET["cid"])) {
+            if ($_GET["cid"] != "") {
+                echo "load_cours_prof(" . $_GET["cid"] . ");";
+            }
+        }
+    }
+    if (array_key_exists("notpdf", $_GET)) {
         echo "alert(\"Erreur lors de l'enregistrement. Le fichier spécifié n'est pas un PDF.\");";
-        if(isset($_GET["cid"])){
-            if($_GET["cid"] != ""){
-                echo "load_plan_add(".$_GET["cid"].");";
+        if (isset($_GET["cid"])) {
+            if ($_GET["cid"] != "") {
+                echo "load_plan_add(" . $_GET["cid"] . ");";
             }
         }
     }
-    if(array_key_exists("uploaderror", $_GET)){
+    if (array_key_exists("uploaderror", $_GET)) {
         echo "alert(\"Une erreur est survenue pendant le téléversement. Veuillez réessayer.\");";
-        if(isset($_GET["cid"])){
-            if($_GET["cid"] != ""){
-                echo "load_plan_add(".$_GET["cid"].");";
+        if (isset($_GET["cid"])) {
+            if ($_GET["cid"] != "") {
+                echo "load_plan_add(" . $_GET["cid"] . ");";
             }
         }
     }
-        if(array_key_exists("error", $_GET)){
+    if (array_key_exists("error", $_GET)) {
         echo "alert(\"Erreur lors de l'enregistrement. La valeur saisie n'est pas un nombre valide.\");";
-        if(isset($_GET["cid"])){
-            if($_GET["cid"] != ""){
-                echo "load_cours_edit(".$_GET["cid"].");";
+        if (isset($_GET["cid"])) {
+            if ($_GET["cid"] != "") {
+                echo "load_cours_edit(" . $_GET["cid"] . ");";
             }
         }
     }
     ?>
                 };
+                function load_cours_prof(id) {
+                    // charge par XMLHTTP le foumulaure d'édition et l'affiche
+                    // si aucun id n'est trouvé une erreur 403 se produit (c'est voulu)
+                    $("#cours_edit_container").load("/include/cours_prof_edit.php", {
+                        "dic": id
+                    }, function () {
+                        location.hash = "#cours_edit";
+                    });
+                }
                 function load_plan_add(id) {
                     // charge par XMLHTTP le foumulaure d'édition et l'affiche
                     // si aucun id n'est trouvé une erreur 403 se produit (c'est voulu)

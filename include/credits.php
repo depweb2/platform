@@ -1,6 +1,6 @@
 <img class='cfnt2' src="/images/cfnt.png" alt="Logo du CFNT" title='Centre de formation des Nouvelles-Technologies'/>
 <p><em>
-        dep.web 2.0 version 1.0.4002<br/>
+        dep.web 2.0 version 1.0.4100<br/>
         Copyright(C) 2014-2016 Centre de formation des Nouvelles-Technologies. Tous droits réservés.<br/>
         Imaginé, écrit et conçu par André-Luc Huneault, élève du groupe 414AI
     </em></p>

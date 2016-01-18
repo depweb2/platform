@@ -4,7 +4,6 @@
             <header class="w3-container w3-theme">
                 <h2>                             
                     <a class="nou arrow-link" href="#">
-                        <img class="icon30" src="images/ic_arrow_back_white_18dp.png" alt=""/>
                         À propos
                     </a>
                     <a class="w3-right w3-modal-confirm no-text w3-context-open" onclick="open_context('.about_sub')" href="javascript:void(0)">

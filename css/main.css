@@ -452,6 +452,21 @@ header h2 img{
 .nou{
     text-decoration: none;
 }
+.nou.menu-link{
+    padding-left: 60px;
+    background: url(../images/ic_menu_white_18dp.png) no-repeat 5px center;
+    background-size: 30px 30px;
+}
+.nou.arrow-link{
+    padding-left: 60px;
+    background: url(../images/ic_arrow_back_white_18dp.png) no-repeat 5px center;
+    background-size: 30px 30px;
+}
+.nou.close-link{
+    padding-left: 60px;
+    background: url(../images/ic_close_white_18dp.png) no-repeat 5px center;
+    background-size: 30px 30px;
+}
 .arrow-link img{
     /*
     -webkit-transition: -webkit-transform 200ms ease-out;
@@ -1003,6 +1018,17 @@ main table tr td{
     opacity: 0;
     background-color: rgba(0,0,0,0.4);
 }
+.panel-sidebar-block{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    opacity: 1;
+    background-color: rgba(0,0,0,0.4);
+}
 #cname h2{
     padding-left: 0px;
     font-size: 25px;
@@ -1070,7 +1096,7 @@ main table tr td{
     font-weight: bold;
     text-decoration: none;
     font-size: 20px;
-    margin-top: 3px;
+	margin-top: 1px;
 }
 .w3-modal-confirm img{
     position: absolute;
@@ -1209,6 +1235,38 @@ main table tr td{
     background-position: 5% center;
     background-repeat: no-repeat;
     padding-left: 35px;
+}
+.course-teacher{
+    display: inline-block;
+    line-height: -5px;
+}
+.panel_sidebar{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    margin-left: -320px;
+    bottom: 0;
+    width: 300px;
+    z-index: 9999;
+    -webkit-box-shadow: 10px 0 10px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 10px 0 10px 0 rgba(0,0,0,0.4);
+    box-shadow: 10px 0 10px 0px rgba(0,0,0,0.4);
+}
+.panel_sidebar.sideopen{
+    margin-left: 0 !important;
+    width: 300px !important
+}
+.panel_sidebar header{
+    height: 71px !important;
+}
+.panel_sidebar .classes{
+    top: 71px;
+}
+.panel_sidebar ul li a:hover{
+    background-color: #81C784;
+}
+.panel_sidebar ul li a:active{
+    background-color: #66BB6A;
 }
 @media screen and (min-width: 981px){
     .index_nav.index_nav_fixed{

@@ -1,23 +1,7 @@
 <?php
-header('Cache-Control: no-cache, no-store, must-revalidate');
-
-function access_denied() {
-    header("Location: /admin/logout.php");
-}
-
-function erreur($msg) {
-    echo "<script>alert(\"$msg\")</script>";
-}
-
-session_start();
-$now = time(); // Checking the time now when home page starts.
-if ($now > $_SESSION['expire']) {
-    access_denied();
-}
-$login = $_SESSION["login"];
-if (!$login == "yes") {
-    access_denied();
-} else {
+ob_start();
+require("/admin/verify_login.php");
+if ($IS_LOGGED_IN) {
     ?>
     <!DOCTYPE html>
     <!--
@@ -52,14 +36,14 @@ if (!$login == "yes") {
         <body>
             <?php
             require("./include/loading.php");
+            require("/include/panel_sidebar.php");
             ?>
             <div id="panel_sites" class="w3-modal fs" style='display: table !important;'>
                 <div class="w3-modal-dialog">
                     <div class="w3-modal-content">
                         <header class="w3-container w3-theme">
                             <h2>
-                                <a class="nou arrow-link" href="/panel.php">
-                                    <img class="icon30" src="images/ic_arrow_back_white_18dp.png" alt=""/>
+                                <a class="nou menu-link" href="javascript:void(0)" onclick='w3_toggle()'>
                                     Sites Web des élèves
                                 </a>
                                 <a class="w3-right w3-modal-confirm no-text" onclick="load_site_add()" href="javascript:void(0)">
@@ -217,4 +201,31 @@ if (!$login == "yes") {
     </html>
     <?php
 }
+$HTTP_ACCEPT_ENCODING = $_SERVER["HTTP_ACCEPT_ENCODING"];
+
+if (headers_sent())
+    $encoding = false;
+else if (strpos($HTTP_ACCEPT_ENCODING, 'x-gzip') !== false)
+    $encoding = 'x-gzip';
+else if (strpos($HTTP_ACCEPT_ENCODING, 'gzip') !== false)
+    $encoding = 'gzip';
+else
+    $encoding = false;
+
+if ($encoding) {
+    $contents = ob_get_clean();
+    $_temp1 = strlen($contents);
+    if ($_temp1 < 2048) {
+        print($contents);
+    } else {
+        header('Content-Encoding: ' . $encoding);
+        print("\x1f\x8b\x08\x00\x00\x00\x00\x00");
+        $contents = gzcompress($contents, 9);
+        $contents = substr($contents, 0, $_temp1);
+        print($contents);
+    }
+} else {
+    ob_end_flush();
+}
+?>
     

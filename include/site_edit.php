@@ -7,7 +7,7 @@ if ($now > $_SESSION['expire']) {
     header('HTTP/1.0 403 Forbidden');
 }
 $login = $_SESSION["login"];
-if (!$login == "yes") {
+if (!$login) {
     session_unset();
     session_destroy();
     header('HTTP/1.0 403 Forbidden');

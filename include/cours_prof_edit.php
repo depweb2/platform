@@ -24,9 +24,6 @@ if (!isset($_POST["dic"])) {
         $idc = odbc_result($result, "id_cours");
         $nomc = utf8_encode(odbc_result($result, "nom_cours"));
         $nidc = utf8_encode(odbc_result($result, "nid_cours"));
-        $typec = odbc_result($result, "stage");
-        $durc = odbc_result($result, "dur_cours");
-        $sdurc = odbc_result($result, "stage_dur_semaine");
         ?>
         <div id="cours_edit" class="w3-modal">
             <div class="w3-modal-dialog">
@@ -35,19 +32,22 @@ if (!isset($_POST["dic"])) {
                         <h3><?php echo $nomc; ?></h3>
                     </div>
                     <div class="w3-container">
-                        <form method="post" action="/admin/cours_update.php" id="coursedit" name="coursedit">
+                        <form method="post" action="/admin/cours_prof_update.php" id="coursedit" name="coursedit">
+                            <span class="bold">Enseignants donnant le cours</span><br>
                             <input type='hidden' name='id' id='id' value='<?php echo $idc; ?>'/>
                             <?php
-                            if ($typec) {
-                                ?>
-                                <label for='durc'>Durée du stage (en jours)</label>
-                                <input value="<?php echo $durc; ?>" class="w3-input w3-light-grey full" type="number" placeholder="nombre de jours" required name="durc" id="durc" size="3"/>
-                                <?php
-                            } else {
-                                ?>
-                                <label for='durc'>Durée du cours (en heures)</label>
-                                <input value="<?php echo $durc; ?>" class="w3-input w3-light-grey full" type="number" placeholder="nombre d'heures" required name="durc" id="durc" size="3"/>
-                                <?php
+                            $result2 = odbc_exec($odbc, "SELECT * FROM enseignants ORDER BY nom_enseignant, prenom_enseignant;");
+                            odbc_fetch_row($result2, 0);
+                            while (odbc_fetch_row($result2)) {
+                                $pid = odbc_result($result2, "id_enseignant");
+                                $pprof = utf8_encode(odbc_result($result2, "prenom_enseignant"));
+                                $nprof = utf8_encode(odbc_result($result2, "nom_enseignant"));
+                                $result3 = odbc_exec($odbc, "SELECT * FROM cours_enseignants WHERE cours = $idc AND enseignant = $pid;");
+                                if (odbc_fetch_row($result3)) {
+                                    echo "<input value='$pid' class='course-teacher-check' type='checkbox' name='teachers[]' checked/><div class='course-teacher'>$pprof $nprof</div><br>";
+                                } else {
+                                    echo "<input value='$pid' class='course-teacher-check' type='checkbox' name='teachers[]'/><div class='course-teacher'>$pprof $nprof</div><br>";
+                                }
                             }
                             ?>
                             <input style="display: none;" type="submit" id="submit2" name="submit" value="submit"/>

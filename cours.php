@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <!--
     dep.web 2.0 - page de cours
@@ -163,9 +166,9 @@
                                 odbc_fetch_row($result2, 0);
                                 while (odbc_fetch_row($result2)) {
                                     $haver = true;
-                                    $ndoc = odbc_result($result2, "nom_doc");
-                                    $udoc = odbc_result($result2, "dir_doc");
-                                    $tdoc = odbc_result($result2, "type_doc");
+                                    $ndoc = utf8_encode(odbc_result($result2, "nom_doc"));
+                                    $udoc = utf8_encode(odbc_result($result2, "dir_doc"));
+                                    $tdoc = utf8_encode(odbc_result($result2, "type_doc"));
                                     // si le document est un lien l'afficher comme un lien internet
                                     if ($tdoc == 1) {
                                         echo "<li><a class='web' href=\"$udoc\" target='_blank'>$ndoc</a></li>";
@@ -202,9 +205,9 @@
                                 odbc_fetch_row($result2, 0);
                                 while (odbc_fetch_row($result2)) {
                                     $haver = true;
-                                    $ndoc = odbc_result($result2, "nom_doc");
-                                    $udoc = odbc_result($result2, "dir_doc");
-                                    $tdoc = odbc_result($result2, "type_doc");
+                                    $ndoc = utf8_encode(odbc_result($result2, "nom_doc"));
+                                    $udoc = utf8_encode(odbc_result($result2, "dir_doc"));
+                                    $tdoc = utf8_encode(odbc_result($result2, "type_doc"));
                                     echo "<li><a class='document' href=\"var/docs/documents_notes/cours/$cid/$udoc\">$ndoc</a></li>";
                                 }
                                 if (!$haver) {
@@ -220,3 +223,31 @@
         </div>
     </body>
 </html>
+<?php
+$HTTP_ACCEPT_ENCODING = $_SERVER["HTTP_ACCEPT_ENCODING"];
+
+if (headers_sent())
+    $encoding = false;
+else if (strpos($HTTP_ACCEPT_ENCODING, 'x-gzip') !== false)
+    $encoding = 'x-gzip';
+else if (strpos($HTTP_ACCEPT_ENCODING, 'gzip') !== false)
+    $encoding = 'gzip';
+else
+    $encoding = false;
+
+if ($encoding) {
+    $contents = ob_get_clean();
+    $_temp1 = strlen($contents);
+    if ($_temp1 < 2048) {
+        print($contents);
+    } else {
+        header('Content-Encoding: ' . $encoding);
+        print("\x1f\x8b\x08\x00\x00\x00\x00\x00");
+        $contents = gzcompress($contents, 9);
+        $contents = substr($contents, 0, $_temp1);
+        print($contents);
+    }
+} else {
+    ob_end_flush();
+}
+?>

@@ -7,7 +7,7 @@ if ($now > $_SESSION['expire']) {
     header('HTTP/1.0 403 Forbidden');
 }
 $login = $_SESSION["login"];
-if (!$login == "yes") {
+if (!$login) {
     session_unset();
     session_destroy();
     header('HTTP/1.0 403 Forbidden');
@@ -35,8 +35,7 @@ if (!isset($_POST["nid"])) {
                 <div class="w3-modal-content w3-animate-bottom">
                     <header class="w3-container w3-theme">
                         <h2>
-                            <a class="nou arrow-link" href="#">
-                                <img class="icon30" src="images/ic_close_white_18dp.png" alt=""/>
+                            <a class="nou close-link" href="#">
                                 Modifier
                             </a>       
                             <a class="w3-right w3-modal-confirm no-text w3-context-open" onclick="open_context('.save_nouv')" href="javascript:void(0)">

@@ -27,7 +27,6 @@ if(!array_key_exists("t", $_GET)){
                 <a href='#' class='w3-closebtn'>&times;</a>
                 <h2>
                     <a class='nou arrow-link' href='#teachers'>
-                        <img class='icon30' src='images/ic_arrow_back_white_18dp.png' alt=''/>
                         $pfname $pname
                     </a>                              
                 </h2>
