@@ -9,7 +9,7 @@
                     </a>
                 </h2>
             </header>
-            <div class="w3-container w3-padding-8">
+            <div class="w3-container w3-padding-8 w3-modal-main-container">
                 <h3>Liste des raccourcis clavier</h3>
                 <p>Note: si vous utilisez un lecteur d'écran comme JAWS ou NVDA, le raccourci doit être précédé par <span class="kb-key">Alt</span>; pour VoiceOver, le raccourci est précédé de <span class="kb-key">Ctrl</span> + <span class="kb-key">Shift</span> + <span class="kb-key">cmd</span></p>
                 <table class="w3-table w3-striped w3-border w3-theme-l4">

@@ -411,18 +411,18 @@ header h2 img{
 }
 .w3-modal div.w3-container{
     height:auto;
-    max-height: 400px;
+    max-height: 400px !important;
     overflow: auto;
 }
-@media screen and (max-width: 601px) and (max-height:700px){
+@media screen and (max-height:700px){
     .w3-modal div.w3-container{
         max-height:inherit;
     }
     .w3-modal .w3-modal-content .w3-modal-main-container{
-        height: -webkit-calc(100% - 67px);
-        height: -moz-calc(100% - 67px);
-        height: -ms-calc(100% - 67px);
-        height: calc(100% - 67px);
+        height: -webkit-calc(100% - 69px);
+        height: -moz-calc(100% - 69px);
+        height: -ms-calc(100% - 69px);
+        height: calc(100% - 69px);
         overflow: auto;
     }
     .w3-modal .w3-modal-content .w3-modal-main-container-2{
@@ -1208,10 +1208,10 @@ main table tr td{
     background-image: url(../images/ic_file_download_black_24dp.png);
 }
 .w3-modal.fs .w3-modal-content .w3-modal-main-container{
-    height: -webkit-calc(100% - 67px);
-    height: -moz-calc(100% - 67px);
-    height: -ms-calc(100% - 67px);
-    height: calc(100% - 67px);
+    height: -webkit-calc(100% - 69px);
+    height: -moz-calc(100% - 69px);
+    height: -ms-calc(100% - 69px);
+    height: calc(100% - 69px);
     overflow: auto;
 }
 .w3-modal.fs .w3-modal-content .w3-modal-main-container-2{
@@ -1381,6 +1381,21 @@ main table tr td{
         width: 600px;
     }
 }
+@media screen and (min-width:981px) and (max-height: 400px){
+    .si-ctitle-c{
+        margin-top: 0;
+        background-color: #2E7D32;
+    }
+    #topbar #cfntlogo{
+        display: none;
+    }
+    #slides{
+        display: none;
+    }
+    #compatible{
+        padding-top: 0px !important;
+    }
+}
 @media screen and (max-width:980px){
     .index_nav h2{
         display: none;
@@ -1499,6 +1514,11 @@ main table tr td{
     }
     #cfntlogo{
         display: none;
+    }
+}
+@media screen and (max-height: 450px){
+    .w3-modal .w3-modal-content:not(.w3-android-modal){
+        height: 100vh;
     }
 }
 @media screen and (max-height:400px){
